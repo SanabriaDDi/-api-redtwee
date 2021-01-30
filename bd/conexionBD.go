@@ -2,15 +2,15 @@ package bd
 
 import (
 	"context"
-	"log"
-
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"log"
+	"os"
 )
 
 /*MongoCN objeto de conexión a la BD*/
 var MongoCN = conectarBD()
-var clientOptions = options.Client().ApplyURI("mongodb+srv:// .jtpcy.mongodb.net/ ?retryWrites=true&w=majority")
+var clientOptions = options.Client().ApplyURI("mongodb+srv://"+os.Getenv("USERNAME_MONGO")+":"+os.Getenv("PASS_MONGO")+"@"+os.Getenv("NAME_DATABASE")+".jtpcy.mongodb.net/"+os.Getenv("NAME_DATABASE")+"?retryWrites=true&w=majority")
 
 /*conectarBD Conecta base de datos*/
 func conectarBD() *mongo.Client {
